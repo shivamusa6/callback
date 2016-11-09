@@ -2,9 +2,10 @@ var host = (process.env.VCAP_APP_HOST || 'localhost');
 var port = (process.env.VCAP_APP_PORT || 8080);
 var http = require('http');
 var options = {
-host: 'w1.weather.gov',
-path: '/xml/current_obs/KSFO.xml'
-};
+  host: 'w1.weather.gov',
+  path: '/xml/current_obs/KSFO.xml',
+  headers: {'user-agent': 'Mozilla/5.0'}
+ };
 var server = http.createServer( function(request, response) {
 var weatherCallback = function(weatherResponse) {
 var buffer = '';
