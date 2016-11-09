@@ -14,6 +14,11 @@ buffer += chunk;
 });
 weatherResponse.on('end', function() {
 var body = buffer;
+var matches = buffer.match(/\<temp_f\>.+\<\/temp_f\>/g);
+if ( null != matches && matches.length > 0 ) {
+body = matches[0].replace(/\<temp_f>/, "")
+.replace(/\<\/temp_f\>/, "");
+}
 response.writeHead( 200, {
 'Content-Length': body.length,
 'Content-Type': 'text/plain'
