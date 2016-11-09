@@ -22,6 +22,7 @@ response.end();
 });
 };
 var weatherRequest = http.request( options, weatherCallback );
+weatherRequest.end();
 weatherRequest.on('error', function(e) {
 response.writeHead( 500, {
 'Content-Length': e.message.length,
